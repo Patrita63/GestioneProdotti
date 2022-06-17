@@ -1,1 +1,19 @@
-<p>product-details works!</p>
+<H2>product details</H2>
+<hr>
+
+<div *ngIf="product">
+    <h2>Product Details</h2>
+    <p>{{ product.id }}</p>
+    <h3>{{ product.name }}</h3>
+    <h4>{{ product.price | currency }}</h4>
+    <p>{{ product.description }}</p>
+    <p>{{ product.dateofproductiondisplay }}</p>
+    <p>{{ product.madeby }}</p>
+
+    <!-- <button type="button" (click)="addToCart(product)">Buy</button> -->
+</div>
+  
+  
+<div *ngIf="product === null || product === undefined">
+    <h2>Product Details NOT FOUND !!!</h2>
+</div>
