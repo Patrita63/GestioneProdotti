@@ -13,6 +13,8 @@ import { DatePipe } from '@angular/common';
 import { RegioniListComponent } from './regioni-list/regioni-list.component';
 import { ViewDatiComponent } from './view-dati/view-dati.component';
 
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import { ViewDatiComponent } from './view-dati/view-dati.component';
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
     AppRoutingModule
