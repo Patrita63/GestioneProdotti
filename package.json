@@ -22,7 +22,11 @@
     "ngx-webstorage": "^10.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+<<<<<<< HEAD
     "tslint": "^3.9.0",
+=======
+    "tslint": "^6.1.3",
+>>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

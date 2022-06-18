@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import { formatDate }  from '@angular/common';
   
 import {Component, OnInit, Inject,  LOCALE_ID }  from '@angular/core';
 
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
 import { Regione } from '../../models/regione';
 import { Provincia } from '../../models/provincia';
 import { Comune, comuni } from '../../models/comune';
@@ -11,7 +15,10 @@ import { Observable } from 'rxjs';
 
 import {LocalStorageService} from 'ngx-webstorage';  
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
 @Component({
   selector: 'app-regioni-list',
   templateUrl: './regioni-list.component.html',
@@ -21,8 +28,12 @@ export class RegioniListComponent implements OnInit {
 
   constructor(
     private callApiService: RESTAPIService
+<<<<<<< HEAD
     ,private locStorage: LocalStorageService
     ,@Inject(LOCALE_ID) public locale: string) { }
+=======
+    ,private locStorage: LocalStorageService) { }
+>>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
 
   // this.regioneList = regioni;
   regioneList: Regione[] = [];
