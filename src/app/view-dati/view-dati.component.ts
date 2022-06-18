@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {LocalStorageService} from 'ngx-webstorage';  
 import { ViewData } from '../../models/viewdati';
 
 @Component({
@@ -9,10 +9,20 @@ import { ViewData } from '../../models/viewdati';
 })
 export class ViewDatiComponent implements OnInit {
   itemView: ViewData;
+  idRegione: number;
+  idProvincia: number;
+  idComune: number;
 
-  constructor() { }
+  constructor(private locStorage: LocalStorageService) { }
 
   ngOnInit(): void {
+    //retrieve using the key in string   
+    this.idRegione = this.locStorage.retrieve('idRegione');
+    console.log('ngOnInit - idRegione selected = ' + this.idRegione);
+    this.idProvincia = this.locStorage.retrieve('idProvincia');
+    console.log('ngOnInit - idProvincia selected = ' + this.idProvincia);
+    this.idComune = this.locStorage.retrieve('idComune');
+    console.log('ngOnInit - idComune selected = ' + this.idComune);
   }
 
-}
+  }

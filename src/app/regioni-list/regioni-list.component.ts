@@ -6,6 +6,8 @@ import { Comune, comuni } from '../../models/comune';
 import { RESTAPIService } from '../../Services/restapiservice.service';
 import { Observable } from 'rxjs';
 
+import {LocalStorageService} from 'ngx-webstorage';  
+
 @Component({
   selector: 'app-regioni-list',
   templateUrl: './regioni-list.component.html',
@@ -13,7 +15,9 @@ import { Observable } from 'rxjs';
 })
 export class RegioniListComponent implements OnInit {
 
-  constructor(private callApiService: RESTAPIService) { }
+  constructor(
+    private callApiService: RESTAPIService
+    ,private locStorage: LocalStorageService) { }
 
   // this.regioneList = regioni;
   regioneList: Regione[] = [];
@@ -70,6 +74,8 @@ export class RegioniListComponent implements OnInit {
   changeRegione(event: any): void {
     const idRegione = Number(event.target.value);
     console.log('changeRegione - idRegione selected = ' + idRegione);
+    // save the  data using store methods  
+    this.locStorage.store('idRegione', idRegione);    
     this.comSelectedList = [];
     this.isVisibleLink = false;
     if (idRegione === 0){
@@ -80,8 +86,12 @@ export class RegioniListComponent implements OnInit {
       this.getProvinceOfIdRegioneFromAPI(idRegione);
     }
   }
+
   changeProvincia(event: any): void {
     const idProvincia = Number(event.target.value);
+    console.log('changeProvincia - idProvincia selected = ' + idProvincia);
+    // save the  data using store methods  
+    this.locStorage.store('idProvincia', idProvincia);    
     this.isVisibleLink = false;
     if (idProvincia === 0){
       this.provSelectedList = [];
@@ -92,8 +102,12 @@ export class RegioniListComponent implements OnInit {
       this.getComuniByIdProvinciaFromAPI(idProvincia)
     }
   }
+
   changeComune(event: any): void {
     const idComune = Number(event.target.value);
+    console.log('changeComune - idComune selected = ' + idComune);
+    // save the  data using store methods  
+    this.locStorage.store('idComune', idComune);    
     this.isVisibleLink = false;
     if (idComune > 0) {
       this.isVisibleLink = true;
