@@ -12,22 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { RegioniListComponent } from './regioni-list/regioni-list.component';
 import { ViewDatiComponent } from './view-dati/view-dati.component';
-<<<<<<< HEAD
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatButtonModule} from '@angular/material/button';
-=======
->>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    MatButtonModule,
-    NgxWebstorageModule.forRoot(),
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
   declarations: [
     AppComponent,
     ProductListComponent,
@@ -36,11 +22,6 @@ import {MatButtonModule} from '@angular/material/button';
     RegioniListComponent,
     ViewDatiComponent
   ],
-<<<<<<< HEAD
-  providers: [
-    DatePipe
-  ],
-=======
   imports: [
     BrowserModule,
     NgxWebstorageModule.forRoot(),
@@ -50,7 +31,7 @@ import {MatButtonModule} from '@angular/material/button';
   providers: [
     DatePipe
   ],
->>>>>>> 22dba8c3b6fa1043e05bdf802bf0bf614af1c80b
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
