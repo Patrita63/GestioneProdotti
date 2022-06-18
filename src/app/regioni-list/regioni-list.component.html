@@ -4,26 +4,26 @@
       <div class="col-sm-4" >
         <h3>Regione</h3>
         <select (change)="changeRegione($event)">
-          <option >seleziona regione</option>
+          <option [value]="0">seleziona regione</option>
           <option [value]="regione.ID" *ngFor="let regione of regioneList">{{regione.Name}}</option>
         </select>
       </div>
      
       <div class="col-sm-4" >
-        <div *ngIf="provSelected.length > 0" >
+        <div *ngIf="provSelectedList.length > 0" >
           <h3>Provincia</h3>
           <select (change)="changeProvincia($event)">
-            <option >seleziona provincia</option>
-            <option [value]="province.ID" *ngFor="let province of provSelected">{{province.Name}} </option>
+            <option [value]="0">seleziona provincia</option>
+            <option [value]="province.ID" *ngFor="let province of provSelectedList">{{province.Name}} </option>
           </select>
         </div>
       </div>
       <div class="col-sm-4" >
-        <div *ngIf="comSelected.length > 0" >
+        <div *ngIf="comSelectedList.length > 0" >
           <h3>Comune</h3>
           <select (change)="changeComune($event)">
-            <option >seleziona comune</option>
-            <option [value]="comune.ID" *ngFor="let comune of comSelected">{{comune.Name}}</option>
+            <option [value]="0">seleziona comune</option>
+            <option [value]="comune.ID" *ngFor="let comune of comSelectedList">{{comune.Name}}</option>
           </select>
         </div>
       </div>

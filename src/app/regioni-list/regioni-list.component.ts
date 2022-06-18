@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Regione } from '../../models/regione';
-import { Provincia, province } from '../../models/provincia';
+import { Provincia } from '../../models/provincia';
 import { Comune, comuni } from '../../models/comune';
 
 import { RESTAPIService } from '../../Services/restapiservice.service';
@@ -17,13 +17,13 @@ export class RegioniListComponent implements OnInit {
 
   // this.regioneList = regioni;
   regioneList: Regione[] = [];
-  provSelected = province;
-  comSelected = comuni;
+  provSelectedList: Provincia[] = []; // province;
+  comSelectedList: Comune[] = []; // comuni;
   isVisibleLink = false;
   ngOnInit(): void {
     this.getAllRegioniFromAPI();
-    this.provSelected = [];
-    this.comSelected = [];
+    this.provSelectedList = [];
+    this.comSelectedList = [];
   }
 
   // tslint:disable-next-line: typedef
@@ -31,54 +31,65 @@ export class RegioniListComponent implements OnInit {
     console.log('getAllRegioniFromAPI - Before this.callApiService.getRegioni');
     this.callApiService.getRegioni()
     .subscribe(result => {
-      console.log('result: ' + result);
+      console.log('getRegioni - result: ' + result);
       this.regioneList = result;
-      console.log('this.regioneList: ' + this.regioneList);
+      console.log('getRegioni - this.regioneList: ' + this.regioneList);
    }, error => {
-     console.log('failed calc', error);
+     console.log('getRegioni - failed call: ', error);
    });
   }
 
   // tslint:disable-next-line: typedef
-  getAllProvinceFromAPI(){
-    this.callApiService.getProvince(this.provSelected)
-    .subscribe((result: any) => {
-     this.provSelected = result;
+  getProvinceOfIdRegioneFromAPI(idReg){
+    console.log('getProvinceOfIdRegioneFromAPI - Before this.callApiService.getProvinceByIdRegione');
+    
+    this.callApiService.getProvinceByIdRegione(idReg)
+    .subscribe(result => {
+     console.log('getProvinceByIdRegione - result: ' + result);
+     this.provSelectedList = result;
+     console.log('getProvinceByIdRegione - this.provSelectedList: ' + this.provSelectedList);
    }, error => {
-     console.log('failed calc', error);
+     console.log('getProvinceByIdRegione - failed call: ', error);
    });
   }
 
   // tslint:disable-next-line: typedef
-  getAllComuniFromAPI(){
-    this.callApiService.getComuni(this.comSelected)
+  getComuniByIdProvinciaFromAPI(idProv){
+    console.log('getComuniByIdProvinciaFromAPI - Before this.callApiService.getComuniByIdProvincia');
+    
+    this.callApiService.getComuniByIdProvincia(idProv)
     .subscribe((result: any) => {
-     this.comSelected = result;
+      console.log('getComuniByIdProvincia - result: ' + result);
+      this.comSelectedList = result;
+      console.log('getComuniByIdProvincia - this.comSelectedList: ' + this.comSelectedList);
    }, error => {
-     console.log('failed calc', error);
+     console.log('getComuniByIdProvincia - failed call: ', error);
    });
   }
 
   changeRegione(event: any): void {
     const idRegione = Number(event.target.value);
-    this.comSelected = [];
+    console.log('changeRegione - idRegione selected = ' + idRegione);
+    this.comSelectedList = [];
     this.isVisibleLink = false;
     if (idRegione === 0){
-      this.provSelected = [];
+      this.provSelectedList = [];
     } else {
-      const result = province.filter(p => p.IdRegione === idRegione);
-      this.provSelected = result;
+      /* const result = province.filter(p => p.IdRegione === idRegione);
+      this.provSelected = result; */
+      this.getProvinceOfIdRegioneFromAPI(idRegione);
     }
   }
   changeProvincia(event: any): void {
     const idProvincia = Number(event.target.value);
     this.isVisibleLink = false;
     if (idProvincia === 0){
-      this.provSelected = [];
-      this.comSelected = [];
+      this.provSelectedList = [];
+      this.comSelectedList = [];
     } else {
-      const result = comuni.filter(p => p.IdProvincia === idProvincia);
-      this.comSelected = result;
+      /* const result = comuni.filter(p => p.IdProvincia === idProvincia);
+      this.comSelected = result; */
+      this.getComuniByIdProvinciaFromAPI(idProvincia)
     }
   }
   changeComune(event: any): void {

@@ -3,6 +3,8 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Regione } from 'src/models/regione';
+import { Provincia } from 'src/models/provincia';
+import { Comune } from 'src/models/comune';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +19,24 @@ export class RESTAPIService {
   // tslint:disable-next-line: typedef
   getRegioni(): Observable<Regione[]> {
     const urlAPI = this.baseUrlAPI + '/Api/getAllRegioni';
-    console.log(urlAPI);
-    debugger;
+    console.log('getRegioni - urlAPI: ' + urlAPI);
+    // debugger;
     return this.http.get<Regione[]>(urlAPI, { headers: this.myhead })
       /* .pipe(map((response: any) => {
         const val = response;
       })); */
+  }
+  
+  getProvinceByIdRegione(idReg): Observable<Provincia[]> {
+    const urlAPI = this.baseUrlAPI + '/Api/getProvinciaByIdRegione/' + idReg;
+    console.log('getProvinceByIdRegione - urlAPI: ' + urlAPI);
+    return this.http.get<Provincia[]>(urlAPI, { headers: this.myhead })
+  }
+
+  getComuniByIdProvincia(idProv): Observable<Comune[]> {
+    const urlAPI = this.baseUrlAPI + '/Api/getComByIdProvincia/' + idProv;
+    console.log('getComuniByIdProvincia - urlAPI: ' + urlAPI);
+    return this.http.get<Comune[]>(urlAPI, { headers: this.myhead })
   }
 
   // tslint:disable-next-line: typedef
