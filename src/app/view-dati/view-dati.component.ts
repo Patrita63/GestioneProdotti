@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorageService} from 'ngx-webstorage';  
+import { LocalStorageService } from 'ngx-webstorage';  
+import { RESTAPIService } from 'src/Services/restapiservice.service';
 import { ViewData } from '../../models/viewdati';
 
 @Component({
@@ -13,7 +14,7 @@ export class ViewDatiComponent implements OnInit {
   idProvincia: number;
   idComune: number;
 
-  constructor(private locStorage: LocalStorageService) { }
+  constructor(private callApiService: RESTAPIService, private locStorage: LocalStorageService) { }
 
   ngOnInit(): void {
     //retrieve using the key in string   
@@ -23,6 +24,19 @@ export class ViewDatiComponent implements OnInit {
     console.log('ngOnInit - idProvincia selected = ' + this.idProvincia);
     this.idComune = this.locStorage.retrieve('idComune');
     console.log('ngOnInit - idComune selected = ' + this.idComune);
+    this.getDatiViewFromAPI(this.idComune);
   }
 
+  getDatiViewFromAPI(idCom) {
+    console.log('getDatiViewFromAPI - Before this.callApiService.getDatiViewByIdComune');
+    this.callApiService.getDatiViewByIdComune(idCom)
+    .subscribe(result => {
+      console.log('getDatiViewByIdComune - result: ' + result);
+      this.itemView = result;
+      console.log('getDatiViewByIdComune - this.itemView: ' + this.itemView);
+   }, error => {
+     console.log('getDatiViewByIdComune - failed call: ', error);
+   });
   }
+
+}

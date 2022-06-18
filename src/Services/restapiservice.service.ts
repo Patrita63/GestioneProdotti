@@ -5,6 +5,7 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { Regione } from 'src/models/regione';
 import { Provincia } from 'src/models/provincia';
 import { Comune } from 'src/models/comune';
+import { ViewData } from 'src/models/viewdati';
 
 @Injectable({
   providedIn: 'root'
@@ -39,21 +40,9 @@ export class RESTAPIService {
     return this.http.get<Comune[]>(urlAPI, { headers: this.myhead })
   }
 
-  // tslint:disable-next-line: typedef
-  getProvince(model: any) {
-    const urlAPI = this.baseUrlAPI + '/Api/getAllProvince';
-    return this.http.get(urlAPI, model)
-      .pipe(map((response: any) => {
-        const val = response;
-      }));
-  }
-
-  // tslint:disable-next-line: typedef
-  getComuni(model: any) {
-    const urlAPI = this.baseUrlAPI + '/Api/getAllComuni';
-    return this.http.get(urlAPI, model)
-      .pipe(map((response: any) => {
-        const val = response;
-      }));
+  getDatiViewByIdComune(idCom): Observable<ViewData> {
+    const urlAPI = this.baseUrlAPI + '/Api/getDatiView/' + idCom;
+    console.log('getDatiViewByIdComune - urlAPI: ' + urlAPI);
+    return this.http.get<ViewData>(urlAPI, { headers: this.myhead })
   }
 }
