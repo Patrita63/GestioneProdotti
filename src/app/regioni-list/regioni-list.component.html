@@ -1,0 +1,34 @@
+<h2>Manca bootstrap</h2>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-4" >
+        <h3>Regione</h3>
+        <select (change)="changeRegione($event)">
+          <option [value]="0">seleziona regione</option>
+          <option [value]="regione.ID" *ngFor="let regione of regioneList">{{regione.Name}}</option>
+        </select>
+      </div>
+     
+      <div class="col-sm-4" >
+        <div *ngIf="provSelectedList.length > 0" >
+          <h3>Provincia</h3>
+          <select (change)="changeProvincia($event)">
+            <option [value]="0">seleziona provincia</option>
+            <option [value]="province.ID" *ngFor="let province of provSelectedList">{{province.Name}} </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4" >
+        <div *ngIf="comSelectedList.length > 0" >
+          <h3>Comune</h3>
+          <select (change)="changeComune($event)">
+            <option [value]="0">seleziona comune</option>
+            <option [value]="comune.ID" *ngFor="let comune of comSelectedList">{{comune.Name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isVisibleLink" style="margin-top: 6%;">
+      <a href="daticomune">view</a>
+    </div>
+  </div>

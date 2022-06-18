@@ -1,0 +1,94 @@
+<H2>view-dati Comune {{ itemView.Comune }}</H2>
+<hr>
+<div class="row" *ngIf="itemView.IdComune > 0">
+    <div class="col-md-1" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Id Comune</label>
+            <input required name="IdComune" style="font-size: 0.8rem;" readonly [value]="itemView.IdComune" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Nome Comune</label>
+            <input required name="Comune" style="font-size: 0.8rem;" readonly [value]="itemView.Comune" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Data Fondazione Comune</label>
+            <input name="DataFondazioneComune" style="font-size: 0.8rem;" readonly [value]="itemView.DataFondazioneComune.replace('T00:00:00', '')" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Numero Abitanti Comune</label>
+            <input name="numAbitantiComune" style="font-size: 0.8rem;" readonly [value]="itemView.numAbitantiComune" class="form-control">
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="itemView.IdProvincia > 0">
+    <div class="col-md-1" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Id Provincia</label>
+            <input required name="IdProvincia" style="font-size: 0.8rem;" readonly [value]="itemView.IdProvincia" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Nome Provincia</label>
+            <input required name="Provincia" style="font-size: 0.8rem;" readonly [value]="itemView.Provincia" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-1" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Is Capoluogo</label>
+            <input required name="isCapoluogo" style="font-size: 0.8rem;" readonly [value]="itemView.isCapoluogo" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Data Fondazione Provincia</label>
+            <input name="DataFondazioneProvincia" style="font-size: 0.8rem;" readonly [value]="itemView.DataFondazioneProvincia.replace('T00:00:00', '')" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Numero Abitanti Provincia</label>
+            <input name="numAbitantiProvincia" style="font-size: 0.8rem;" readonly [value]="itemView.numAbitantiProvincia" class="form-control">
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="itemView.IdRegione > 0">
+    <div class="col-md-1" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Id Regione</label>
+            <input required name="IdRegione" style="font-size: 0.8rem;" readonly [value]="itemView.IdRegione" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Nome Regione</label>
+            <input required name="Regione" style="font-size: 0.8rem;" readonly [value]="itemView.Regione" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-1" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Is Autonoma</label>
+            <input required name="isAutonoma" style="font-size: 0.8rem;" readonly [value]="itemView.isAutonoma" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Data Fondazione Regione</label>
+            <input name="DataFondazioneRegione" style="font-size: 0.8rem;" readonly [value]="itemView.DataFondazioneRegione.replace('T00:00:00', '')" class="form-control">
+        </div>
+    </div>
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="font-weight-bold" style="font-size: 0.8rem;">Numero Abitanti Regione</label>
+            <input name="numAbitantiRegione" style="font-size: 0.8rem;" readonly [value]="itemView.numAbitantiRegione" class="form-control">
+        </div>
+    </div>
+</div>
