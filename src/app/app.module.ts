@@ -12,8 +12,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { RegioniListComponent } from './regioni-list/regioni-list.component';
 import { ViewDatiComponent } from './view-dati/view-dati.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    MatButtonModule,
+    NgxWebstorageModule.forRoot(),
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
+  ],
   declarations: [
     AppComponent,
     ProductListComponent,
@@ -21,12 +32,6 @@ import { ViewDatiComponent } from './view-dati/view-dati.component';
     ProductAlertsComponent,
     RegioniListComponent,
     ViewDatiComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgxWebstorageModule.forRoot(),
-    HttpClientModule,
-    AppRoutingModule
   ],
   providers: [
     DatePipe

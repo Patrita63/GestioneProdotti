@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate }  from '@angular/common';
+  
+import {Component, OnInit, Inject,  LOCALE_ID }  from '@angular/core';
+
 import { Regione } from '../../models/regione';
 import { Provincia } from '../../models/provincia';
 import { Comune, comuni } from '../../models/comune';
@@ -7,6 +10,7 @@ import { RESTAPIService } from '../../Services/restapiservice.service';
 import { Observable } from 'rxjs';
 
 import {LocalStorageService} from 'ngx-webstorage';  
+
 
 @Component({
   selector: 'app-regioni-list',
@@ -17,7 +21,8 @@ export class RegioniListComponent implements OnInit {
 
   constructor(
     private callApiService: RESTAPIService
-    ,private locStorage: LocalStorageService) { }
+    ,private locStorage: LocalStorageService
+    ,@Inject(LOCALE_ID) public locale: string) { }
 
   // this.regioneList = regioni;
   regioneList: Regione[] = [];

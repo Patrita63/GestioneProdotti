@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate }  from '@angular/common';
+import { Component, OnInit, Inject,  LOCALE_ID } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';  
 import { RESTAPIService } from 'src/Services/restapiservice.service';
 import { ViewData } from '../../models/viewdati';
@@ -14,7 +15,9 @@ export class ViewDatiComponent implements OnInit {
   idProvincia: number;
   idComune: number;
 
-  constructor(private callApiService: RESTAPIService, private locStorage: LocalStorageService) { }
+  // curr = formatDate("03-march-2022", 'yyyy-dd-MM', this.locale);
+
+  constructor(private callApiService: RESTAPIService, private locStorage: LocalStorageService, @Inject(LOCALE_ID) public locale: string) { }
 
   ngOnInit(): void {
     //retrieve using the key in string   
@@ -37,6 +40,10 @@ export class ViewDatiComponent implements OnInit {
    }, error => {
      console.log('getDatiViewByIdComune - failed call: ', error);
    });
+  }
+
+  formattaData(dataDaFormattare: Date, formato: string): any {
+    return formatDate(dataDaFormattare, formato, this.locale);
   }
 
 }
