@@ -18,11 +18,11 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "angular-webstorage-service": "^1.0.2",
     "codelyzer": "^0.0.28",
     "ngx-webstorage": "^10.0.1",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-    "tslint": "^3.9.0",
+    "tslib": "^1.10.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

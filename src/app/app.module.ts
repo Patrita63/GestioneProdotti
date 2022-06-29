@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+// https://www.cloudhadoop.com/angular-local-session-storage-tutorial/
 import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +15,6 @@ import { DatePipe } from '@angular/common';
 import { RegioniListComponent } from './regioni-list/regioni-list.component';
 import { ViewDatiComponent } from './view-dati/view-dati.component';
 
-import {MatButtonModule} from '@angular/material/button';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,6 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
     AppRoutingModule
@@ -34,6 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
   providers: [
     DatePipe
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 

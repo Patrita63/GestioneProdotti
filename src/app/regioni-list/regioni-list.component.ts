@@ -8,7 +8,6 @@ import { Comune, comuni } from '../../models/comune';
 
 import { RESTAPIService } from '../../Services/restapiservice.service';
 import { Observable } from 'rxjs';
-
 import {LocalStorageService} from 'ngx-webstorage';  
 
 @Component({
@@ -29,6 +28,8 @@ export class RegioniListComponent implements OnInit {
   comSelectedList: Comune[] = []; // comuni;
   isVisibleLink = false;
   ngOnInit(): void {
+    // TODO PATRIZIO
+    
     this.getAllRegioniFromAPI();
     this.provSelectedList = [];
     this.comSelectedList = [];
