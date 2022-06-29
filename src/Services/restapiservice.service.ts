@@ -15,13 +15,19 @@ import { environment } from 'src/environments/environment';
 export class RESTAPIService {
   public myhead = new HttpHeaders().set('Content-Type', 'application/json');
 
-  // TODO PATRIZIO prendere dalla sessione
+  // PATRIZIO informazione presa dalla sessione
   baseUrlAPI = "" // 'https://localhost:44325';
 
   constructor(private http: HttpClient) { 
+    if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
+      this.getAllDataFromConfig();
+    }
+  }
+
+  getAllDataFromConfig() {
     do {
       this.baseUrlAPI = sessionStorage.getItem("apiUrlHttps");
-      console.log('RESTAPIService constructor - this.baseUrlAPI: ' + this.baseUrlAPI);
+      console.log('RESTAPIService getAllDataFromConfig - this.baseUrlAPI: ' + this.baseUrlAPI);
       if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
         this.loadSettingsDataFromConfig(environment.name);
       }
@@ -31,7 +37,7 @@ export class RESTAPIService {
 
   loadSettingsDataFromConfig(nomefileconfig: string) {
     const jsonFile = 'assets/config/config.' + nomefileconfig + '.json';
-    console.log('AppComponent loadSettingsDataFromConfig - jsonFile: ' + jsonFile);
+    console.log('RESTAPIService loadSettingsDataFromConfig - jsonFile: ' + jsonFile);
     return new Promise<void>((resolve, reject) => {
         this.http.get(jsonFile).subscribe(
           (response: IAppConfig) => {
@@ -75,13 +81,20 @@ export class RESTAPIService {
 
   // tslint:disable-next-line: typedef
   getRegioni(): Observable<Regione[]> {
-    const urlAPI = this.baseUrlAPI + '/Api/getAllRegioni';
-    console.log('getRegioni - urlAPI: ' + urlAPI);
-    // debugger;
-    return this.http.get<Regione[]>(urlAPI, { headers: this.myhead })
-      /* .pipe(map((response: any) => {
-        const val = response;
-      })); */
+    if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
+      this.getAllDataFromConfig();
+    };
+
+    if(this.baseUrlAPI != null) {
+      const urlAPI = this.baseUrlAPI + '/Api/getAllRegioni';
+      console.log('getRegioni - urlAPI: ' + urlAPI);
+      // debugger;
+      return this.http.get<Regione[]>(urlAPI, { headers: this.myhead })
+        /* .pipe(map((response: any) => {
+          const val = response;
+        })); */
+    }
+    
   }
   
   getProvinceByIdRegione(idReg): Observable<Provincia[]> {

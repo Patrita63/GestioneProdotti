@@ -9,6 +9,8 @@ import { Comune, comuni } from '../../models/comune';
 import { RESTAPIService } from '../../Services/restapiservice.service';
 import { Observable } from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';  
+import { environment } from 'src/environments/environment';
+import { IAppConfig } from 'src/app-config.model';
 
 @Component({
   selector: 'app-regioni-list',
@@ -17,10 +19,14 @@ import {LocalStorageService} from 'ngx-webstorage';
 })
 export class RegioniListComponent implements OnInit {
 
+  rootAppUrl = "";
   constructor(
     private callApiService: RESTAPIService
     ,private locStorage: LocalStorageService
-    ,@Inject(LOCALE_ID) public locale: string) { }
+    ,@Inject(LOCALE_ID) public locale: string) { 
+      // PATRIZIO RESOLVED
+      this.callApiService.getAllDataFromConfig();
+    }
 
   // this.regioneList = regioni;
   regioneList: Regione[] = [];
@@ -28,16 +34,16 @@ export class RegioniListComponent implements OnInit {
   comSelectedList: Comune[] = []; // comuni;
   isVisibleLink = false;
   ngOnInit(): void {
-    // TODO PATRIZIO
-    
     this.getAllRegioniFromAPI();
     this.provSelectedList = [];
     this.comSelectedList = [];
   }
 
-  // tslint:disable-next-line: typedef
+    // tslint:disable-next-line: typedef
   getAllRegioniFromAPI() {
     console.log('getAllRegioniFromAPI - Before this.callApiService.getRegioni');
+    
+
     this.callApiService.getRegioni()
     .subscribe(result => {
       console.log('getRegioni - result: ' + result);
@@ -109,6 +115,7 @@ export class RegioniListComponent implements OnInit {
   }
 
   changeComune(event: any): void {
+    this.rootAppUrl = this.callApiService.getFromLocal("rootAppUrl");
     const idComune = Number(event.target.value);
     console.log('changeComune - idComune selected = ' + idComune);
     // save the  data using store methods  

@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   productPagerItems = 0;
   productPagerItemsPerPage = 0; */
 
-  // TODO PATRIZIO sessiondata: any = [];
+  // sessiondata: any = [];
 
  /*  constructor(
     private http: HttpClient, 

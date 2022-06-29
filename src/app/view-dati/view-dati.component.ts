@@ -31,7 +31,7 @@ export class ViewDatiComponent implements OnInit {
   getDatiViewFromAPI(idCom) {
     console.log('getDatiViewFromAPI - Before this.callApiService.getDatiViewByIdComune');
     this.callApiService.getDatiViewByIdComune(idCom)
-    .subscribe(result => {
+    .subscribe((result: ViewData) => {
       console.log('getDatiViewByIdComune - result: ' + result);
       this.itemView = result;
       console.log('getDatiViewByIdComune - this.itemView: ' + this.itemView);
