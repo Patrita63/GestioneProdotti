@@ -4,8 +4,8 @@
         "productPagerItemsPerPage": 300
     },
     "apiServer": {
-        "apiUrlHttp": "http://localhost:44325",
-        "apiUrlHttps": "https://localhost:44325",
+        "apiUrlHttp": "http://localhost:8026/",
+        "apiUrlHttps": "http://localhost:8026/",
         "rootAppUrl": "http://localhost:4200"
     },
     "mail": {

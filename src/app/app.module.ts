@@ -1,5 +1,6 @@
+import { APP_INITIALIZER , NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppConfig } from '../app/shared/appconfig.service';
 
 // https://www.cloudhadoop.com/angular-local-session-storage-tutorial/
 import {NgxWebstorageModule} from 'ngx-webstorage';
@@ -15,6 +16,9 @@ import { DatePipe } from '@angular/common';
 import { RegioniListComponent } from './regioni-list/regioni-list.component';
 import { ViewDatiComponent } from './view-dati/view-dati.component';
 
+export function initializeApp(appConfig: AppConfig) {
+  return () => appConfig.load();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,10 @@ import { ViewDatiComponent } from './view-dati/view-dati.component';
     AppRoutingModule
   ],
   providers: [
+    AppConfig,
+       { provide: APP_INITIALIZER,
+         useFactory: initializeApp,
+         deps: [AppConfig], multi: true },
     DatePipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

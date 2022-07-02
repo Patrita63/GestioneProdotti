@@ -1,7 +1,7 @@
 // Ambiente di test
 export const environment = {
   production: false,
-  name: 'deploy'
+  name: 'dev'
 };
 
 /*

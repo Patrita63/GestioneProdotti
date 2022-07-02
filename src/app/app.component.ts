@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
 import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'; 
+import { AppConfig } from './shared/appconfig.service';
 // https://www.js-tutorials.com/javascript-tutorial/use-localstorage-sessionstorage-using-webstorage-angular4/
 // npm install --save angular-webstorage-service --legacy-peer-deps
-import { IAppConfig } from 'src/app-config.model';
-import { environment } from 'src/environments/environment';
+// import { AppConfig } from 'src/app-config.model';
+// import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -29,11 +30,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('AppComponent ngOnInit');
-    console.log('AppComponent ngOnInit - environment.name: ' + environment.name);
-    this.loadSettingsDataFromConfig(environment.name);
+    console.log('AppComponent ngOnInit - AppConfig.settings.apiServer.apiUrlHttp: ' + AppConfig.settings.apiServer.apiUrlHttp);
+    this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttp);
+    console.log('AppComponent ngOnInit - AppConfig.settings.apiServer.apiUrlHttps: ' + AppConfig.settings.apiServer.apiUrlHttps);
+    this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttps);
+    //this.loadSettingsDataFromConfig(environment.name);
   }
 
-loadSettingsDataFromConfig(nomefileconfig: string) {
+/* loadSettingsDataFromConfig(nomefileconfig: string) {
   const jsonFile = 'assets/config/config.' + nomefileconfig + '.json';
   console.log('AppComponent loadSettingsDataFromConfig - jsonFile: ' + jsonFile);
   return new Promise<void>((resolve, reject) => {
@@ -59,7 +63,7 @@ loadSettingsDataFromConfig(nomefileconfig: string) {
       }
       )
     });
-  }
+  } */
 
   saveInLocal(key, val): void {
     console.log('saveInLocal - RECEIVED key: ' + key + ' - value: ' + val);

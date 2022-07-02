@@ -6,8 +6,9 @@ import { Regione } from 'src/models/regione';
 import { Provincia } from 'src/models/provincia';
 import { Comune } from 'src/models/comune';
 import { ViewData } from 'src/models/viewdati';
-import { IAppConfig } from 'src/app-config.model';
+// PAT import { IAppConfig } from 'src/app-config.model';
 import { environment } from 'src/environments/environment';
+import { AppConfig } from 'src/app/shared/appconfig.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,19 @@ import { environment } from 'src/environments/environment';
 export class RESTAPIService {
   public myhead = new HttpHeaders().set('Content-Type', 'application/json');
 
-  // PATRIZIO informazione presa dalla sessione
-  baseUrlAPI = "" // 'https://localhost:44325';
+  // PAT informazione presa dalla sessione
+  // https://devblogs.microsoft.com/premier-developer/angular-how-to-editable-config-files/
+  baseUrlAPI = AppConfig.settings.apiServer.apiUrlHttps; // 'https://localhost:44325';
+  
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {}
+  /* constructor(private http: HttpClient) { 
     if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
       this.getAllDataFromConfig();
     }
-  }
+  } */
 
-  getAllDataFromConfig() {
+  /* getAllDataFromConfig() {
     do {
       this.baseUrlAPI = sessionStorage.getItem("apiUrlHttps");
       console.log('RESTAPIService getAllDataFromConfig - this.baseUrlAPI: ' + this.baseUrlAPI);
@@ -66,8 +70,8 @@ export class RESTAPIService {
     saveInLocal(key, val): void {
       console.log('saveInLocal - RECEIVED key: ' + key + ' - value: ' + val);
       sessionStorage.setItem(key, val);
-      /* this.storage.set(key, val);
-      this.sessiondata[key] = this.storage.get(key); */
+      // this.storage.set(key, val);
+      // this.sessiondata[key] = this.storage.get(key); 
     }
   
     getFromLocal(key): any {
@@ -75,16 +79,16 @@ export class RESTAPIService {
       // this.sessiondata[key] = this.storage.get(key);
       console.log('getFromLocal - RECEIVED key: ' + key + ' - value:' + sessionStorage.getItem(key));
       return sessionStorage.getItem(key);
-      /* console.log(this.sessiondata);
-      return this.sessiondata[key]; */
-    }
+      // console.log(this.sessiondata);
+      // return this.sessiondata[key]; 
+    } */
 
   // tslint:disable-next-line: typedef
   getRegioni(): Observable<Regione[]> {
-    if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
+    /* if(this.baseUrlAPI == "" || this.baseUrlAPI == null || this.baseUrlAPI == undefined) {
       this.getAllDataFromConfig();
-    };
-
+    }; */
+    console.log('RESTAPIService - getRegioni - this.baseUrlAPI: ' + this.baseUrlAPI);
     if(this.baseUrlAPI != null) {
       const urlAPI = this.baseUrlAPI + '/Api/getAllRegioni';
       console.log('getRegioni - urlAPI: ' + urlAPI);

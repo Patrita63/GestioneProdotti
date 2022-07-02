@@ -10,7 +10,7 @@ import { RESTAPIService } from '../../Services/restapiservice.service';
 import { Observable } from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';  
 import { environment } from 'src/environments/environment';
-import { IAppConfig } from 'src/app-config.model';
+// PAT import { IAppConfig } from 'src/app-config.model';
 
 @Component({
   selector: 'app-regioni-list',
@@ -25,7 +25,7 @@ export class RegioniListComponent implements OnInit {
     ,private locStorage: LocalStorageService
     ,@Inject(LOCALE_ID) public locale: string) { 
       // PATRIZIO RESOLVED
-      this.callApiService.getAllDataFromConfig();
+      // this.callApiService.getAllDataFromConfig();
     }
 
   // this.regioneList = regioni;
@@ -115,7 +115,7 @@ export class RegioniListComponent implements OnInit {
   }
 
   changeComune(event: any): void {
-    this.rootAppUrl = this.callApiService.getFromLocal("rootAppUrl");
+    // PAT this.rootAppUrl = this.callApiService.getFromLocal("rootAppUrl");
     const idComune = Number(event.target.value);
     console.log('changeComune - idComune selected = ' + idComune);
     // save the  data using store methods  
