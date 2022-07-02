@@ -6,11 +6,11 @@ import { Regione } from '../../models/regione';
 import { Provincia } from '../../models/provincia';
 import { Comune, comuni } from '../../models/comune';
 
-import { RESTAPIService } from '../../Services/restapiservice.service';
+import { RESTAPI } from '../../Services/restapi.service';
 import { Observable } from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';  
 import { environment } from 'src/environments/environment';
-// PAT import { IAppConfig } from 'src/app-config.model';
+import { AppConfig } from '../shared/appconfig.service';
 
 @Component({
   selector: 'app-regioni-list',
@@ -21,11 +21,9 @@ export class RegioniListComponent implements OnInit {
 
   rootAppUrl = "";
   constructor(
-    private callApiService: RESTAPIService
+    private callApiService: RESTAPI
     ,private locStorage: LocalStorageService
     ,@Inject(LOCALE_ID) public locale: string) { 
-      // PATRIZIO RESOLVED
-      // this.callApiService.getAllDataFromConfig();
     }
 
   // this.regioneList = regioni;
@@ -42,7 +40,6 @@ export class RegioniListComponent implements OnInit {
     // tslint:disable-next-line: typedef
   getAllRegioniFromAPI() {
     console.log('getAllRegioniFromAPI - Before this.callApiService.getRegioni');
-    
 
     this.callApiService.getRegioni()
     .subscribe(result => {
@@ -115,7 +112,7 @@ export class RegioniListComponent implements OnInit {
   }
 
   changeComune(event: any): void {
-    // PAT this.rootAppUrl = this.callApiService.getFromLocal("rootAppUrl");
+    this.rootAppUrl = AppConfig.settings.apiServer.rootAppUrl;
     const idComune = Number(event.target.value);
     console.log('changeComune - idComune selected = ' + idComune);
     // save the  data using store methods  

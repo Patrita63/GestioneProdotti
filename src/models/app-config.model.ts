@@ -17,6 +17,7 @@ export interface IAppConfig {
     apiServer: {
         apiUrlHttp: string;
         apiUrlHttps: string;
+        rootAppUrl: string;
     };
 
     mail: {

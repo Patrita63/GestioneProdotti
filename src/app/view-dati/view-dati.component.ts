@@ -1,7 +1,7 @@
 import { formatDate }  from '@angular/common';
 import { Component, OnInit, Inject,  LOCALE_ID } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';  
-import { RESTAPIService } from 'src/Services/restapiservice.service';
+import { RESTAPI } from 'src/Services/restapi.service';
 import { ViewData } from '../../models/viewdati';
 
 @Component({
@@ -15,7 +15,7 @@ export class ViewDatiComponent implements OnInit {
   idProvincia: number;
   idComune: number;
 
-  constructor(private callApiService: RESTAPIService, private locStorage: LocalStorageService, @Inject(LOCALE_ID) public locale: string) { }
+  constructor(private callApiService: RESTAPI, private locStorage: LocalStorageService, @Inject(LOCALE_ID) public locale: string) { }
 
   ngOnInit(): void {
     //retrieve using the key in string   
