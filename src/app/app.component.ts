@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 // tslint:disable-next-line:max-line-length
-import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'; 
+// import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service'; 
 import { AppConfig } from './shared/appconfig.service';
 // https://www.js-tutorials.com/javascript-tutorial/use-localstorage-sessionstorage-using-webstorage-angular4/
 // npm install --save angular-webstorage-service --legacy-peer-deps

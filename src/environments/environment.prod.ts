@@ -1,5 +1,5 @@
 // Ambiente di Produzione
 export const environment = {
-    production: false,
+    production: true,
     name: 'deploy'
   };

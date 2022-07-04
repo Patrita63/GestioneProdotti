@@ -32,9 +32,9 @@ export class ViewDatiComponent implements OnInit {
     console.log('getDatiViewFromAPI - Before this.callApiService.getDatiViewByIdComune');
     this.callApiService.getDatiViewByIdComune(idCom)
     .subscribe((result: ViewData) => {
-      console.log('getDatiViewByIdComune - result: ' + result);
+      console.log('getDatiViewByIdComune - result.Comune: ' + result.Comune);
       this.itemView = result;
-      console.log('getDatiViewByIdComune - this.itemView: ' + this.itemView);
+      console.log('getDatiViewByIdComune - this.itemView.Comune: ' + this.itemView.Comune);
    }, error => {
      console.log('getDatiViewByIdComune - failed call: ', error);
    });

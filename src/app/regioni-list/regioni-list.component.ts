@@ -4,7 +4,7 @@ import {Component, OnInit, Inject,  LOCALE_ID }  from '@angular/core';
 
 import { Regione } from '../../models/regione';
 import { Provincia } from '../../models/provincia';
-import { Comune, comuni } from '../../models/comune';
+import { Comune } from '../../models/comune';
 
 import { RESTAPI } from '../../Services/restapi.service';
 import { Observable } from 'rxjs';

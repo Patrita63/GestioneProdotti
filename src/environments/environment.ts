@@ -1,6 +1,6 @@
 // Ambiente di test
 export const environment = {
-  production: false,
+  production: true,
   name: 'dev'
 };
 
