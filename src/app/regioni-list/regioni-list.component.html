@@ -1,4 +1,17 @@
-<h2 style="padding-left: 5%;padding-top: 2%;">Manca bootstrap</h2>
+<br>
+<div style="padding-left: 5%;" class="container">
+  <h2>Bootstrap</h2>
+  <p>npm i bootstrap</p>
+  <p>npm audit fix --force</p>
+  <p>Copiare il relative path del file 'bootstrap.min.css' nella sezione styles del file 'angular.json'</p>
+  <p>
+    "styles": [ <br>
+    <span class="tab"></span>"src/styles.css", <br>
+    <span class="tab"></span>"node_modules/bootstrap/dist/css/bootstrap.min.css" <br>
+    ], <br>
+  </p>
+</div>
+<br>
 <div style="padding-left: 5%;" class="container">
     <div class="row">
       <div class="col-sm-4" >
@@ -29,7 +42,10 @@
       </div>
     </div>
     <div *ngIf="isVisibleLink" style="margin-top: 6%;">
+      <div class="col my-column">
+        <a [routerLink]="['/daticomune']" type="button" class="my-btn btn btn-primary" routerLinkActive="router-link-active"  target="_blank">View</a>
+      </div>
       <!-- <a href="daticomune">view</a> -->
-      <a mat-raised-button [routerLink]="['/daticomune']" routerLinkActive="router-link-active"  target="_blank">View</a>
+      <!-- <a mat-raised-button [routerLink]="['/daticomune']" routerLinkActive="router-link-active"  target="_blank">View</a> -->
     </div>
   </div>

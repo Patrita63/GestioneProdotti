@@ -1,7 +1,7 @@
 {
     "GridPager": {
-        "productPagerItems": 100,
-        "productPagerItemsPerPage": 300
+        "productPagerItems": 10,
+        "productPagerItemsPerPage": 50
     },
     "apiServer": {
         "apiUrlHttp": "http://localhost:8026/",

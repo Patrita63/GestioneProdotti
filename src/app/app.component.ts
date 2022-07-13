@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('AppComponent ngOnInit');
     console.log('AppComponent ngOnInit - AppConfig.settings.apiServer.apiUrlHttp: ' + AppConfig.settings.apiServer.apiUrlHttp);
-    this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttp);
+    // this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttp);
     console.log('AppComponent ngOnInit - AppConfig.settings.apiServer.apiUrlHttps: ' + AppConfig.settings.apiServer.apiUrlHttps);
-    this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttps);
+    // this.saveInLocal('apiUrlHttp', AppConfig.settings.apiServer.apiUrlHttps);
     //this.loadSettingsDataFromConfig(environment.name);
   }
 

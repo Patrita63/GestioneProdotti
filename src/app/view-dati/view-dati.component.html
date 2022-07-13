@@ -1,3 +1,9 @@
+<br>
+<div class="row">
+    <div class="col my-column">
+        <button [routerLink]="['']" type="button" class="my-btn btn btn-primary">Back</button>
+    </div>
+</div>
 <H2 style="padding-left: 5%;padding-top: 2%;">Dati del comune: {{ itemView.Comune }}</H2>
 <br>
 <div style="padding-left: 5%;" class="container" class="row" *ngIf="itemView.IdComune > 0">
@@ -40,13 +46,13 @@
             <input required name="Provincia" style="font-size: 0.8rem;" readonly [value]="itemView.Provincia" class="form-control">
         </div>
     </div>
-    <div class="col-md-1" >
+    <div class="col-md-2" >
         <div class="form-group">
             <label class="font-weight-bold" style="font-size: 0.8rem;">E' Capoluogo: </label>
             <input required name="isCapoluogo" style="font-size: 0.8rem;" readonly [value]="itemView.isCapoluogo" class="form-control">
         </div>
     </div>
-    <div class="col-md-3" >
+    <div class="col-md-2" >
         <div class="form-group">
             <label class="font-weight-bold" style="font-size: 0.8rem;">Data Fondazione Provincia: </label>
             <input name="DataFondazioneProvincia" style="font-size: 0.8rem;" readonly [value]="formattaData(itemView.DataFondazioneProvincia, 'dd-MM-yyyy')" class="form-control">
@@ -73,13 +79,13 @@
             <input required name="Regione" style="font-size: 0.8rem;" readonly [value]="itemView.Regione" class="form-control">
         </div>
     </div>
-    <div class="col-md-1" >
+    <div class="col-md-2" >
         <div class="form-group">
             <label class="font-weight-bold" style="font-size: 0.8rem;">E' Regione Autonoma: </label>
             <input required name="isAutonoma" style="font-size: 0.8rem;" readonly [value]="itemView.isAutonoma" class="form-control">
         </div>
     </div>
-    <div class="col-md-3" >
+    <div class="col-md-2" >
         <div class="form-group">
             <label class="font-weight-bold" style="font-size: 0.8rem;">Data Fondazione Regione: </label>
             <input name="DataFondazioneRegione" style="font-size: 0.8rem;" readonly [value]="formattaData(itemView.DataFondazioneRegione, 'dd-MM-yyyy')" class="form-control">

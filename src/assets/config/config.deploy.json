@@ -6,7 +6,7 @@
     "apiServer": {
         "apiUrlHttp": "http://localhost:44325",
         "apiUrlHttps": "https://localhost:44325",
-        "rootAppUrl": "http://localhost:4200"
+        "rootAppUrl": "http://localhost:8025"
     },
     "mail": {
         "smtpServer": "http://localhost:88900",

@@ -37,7 +37,7 @@ export class RegioniListComponent implements OnInit {
     this.comSelectedList = [];
   }
 
-    // tslint:disable-next-line: typedef
+  // tslint:disable-next-line: typedef
   getAllRegioniFromAPI() {
     console.log('getAllRegioniFromAPI - Before this.callApiService.getRegioni');
 
